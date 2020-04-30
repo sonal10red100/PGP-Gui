@@ -10,7 +10,7 @@ Before starting the application:
 	-bcprov-jdk14-1.65
 	-pgplib-3.2.1 (Open PGP library is used for PGP functions.)
 
-    2. Change the "localPath" variable in LocalPath.java file to your path where the project is saved along with the project folder's name.
+    2. Change the "localPath" variable in LocalPath.java file to your path where the project is saved along with the project folder's 	     name.
 
     3. Change the "keyStore_Password" variable in LocalPath.java file in case if you want to renew the keystore.
 
