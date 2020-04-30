@@ -39,7 +39,7 @@ public class CreateKeyDialog {
           picLabel.setBounds(100, 20, 700, 350);
      
 	           Font  f3  = new Font(Font.SERIF,  Font.BOLD, 17);
-	           JLabel msg = new JLabel("\"REMEMBER TO KEEP YOUR KEYS SAFE\"");
+	           JLabel msg = new JLabel("GENERATE A PGP KEY PAIR");
 		       msg.setForeground(color);
 		       msg.setBounds(400, 50, 200, 30);;
 	           msg.setFont(f3);

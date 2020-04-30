@@ -7,7 +7,7 @@ import javax.swing.*;
 public class GenerateRevocationCertificate {
 	LocalPath l;
 	public void revocationCertiGen(String uId, String pass) throws Exception {
-		KeyStore ks = new KeyStore("src/KeyFiles/pgp_KeyStore.keystore", "keystore_password");
+		KeyStore ks = new KeyStore("src/KeyFiles/pgp_KeyStore.keystore", l.keyStore_Password);
 		int f=0;
 		KeyPairInformation[] keys = ks.getKeys();
 		for(KeyPairInformation key: keys){

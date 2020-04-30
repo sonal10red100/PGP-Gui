@@ -17,7 +17,7 @@ public class KeyGenService {
 	public void generateKey(String uname, String emailId, String pass) throws Exception {
 		
 		// initialize the KeyStore where the key will be generated
-				KeyStore ks = new KeyStore("src/KeyFiles/pgp_KeyStore.keystore", "keystore_password");
+				KeyStore ks = new KeyStore("src/KeyFiles/pgp_KeyStore.keystore", l.keyStore_Password);
 				
 				// key primary user Id
 				String userId = emailId;
@@ -72,8 +72,9 @@ public class KeyGenService {
 					   
 				    ks.exportPublicKey(pub_path, userId, true);
 				    ks.exportPrivateKey(pri_path, userId, true);
-				  
-					    
+				    int input = JOptionPane.showConfirmDialog(null,
+                            "<html>Remember to keep your keys safe.<br/>Generate REVOCATION CERTIFICATE to avoid serious consequences in case the private key is compromised.</html>", "Message",JOptionPane.OK_OPTION);
+            		
 				    
 				} 
 				catch (com.didisoft.pgp.PGPException e) 

@@ -22,7 +22,7 @@ import java.io.IOException;
 
 class MyFrame extends JFrame {
   int width=850;
-  int height=600;
+  int height=700;
   int flag;
   Icon iconEn = new ImageIcon("src/icons/encrypt.png");
   private JButton btnEncryptFile = new JButton("<html>Encrypt<br/> File<html>",iconEn);
@@ -59,7 +59,11 @@ class MyFrame extends JFrame {
   Color color = new Color(63,96,124);
 	
   
-   
+  private JLabel picLabel = new JLabel(new ImageIcon("src/icons/workflow.png"));
+  //picLabel.setBounds(80, 180, 450, 380);
+  ///constraints.gridx = 0;
+  //constraints.gridy = 3; 
+     //getContentPane().add(picLabel);
   
   private JLabel lblA = new JLabel("KEY MANAGEMENT");
   private JLabel lblB = new JLabel("<html>ENCRYPTION/DECRYPTION & <br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp DIGITAL SIGNATURE</html>");
@@ -111,6 +115,11 @@ class MyFrame extends JFrame {
 	    mydialog.setSize(400,200);
 	    mydialog.setLocationRelativeTo(null);
 	    mydialog.setVisible(true);
+	    JLabel picLabel = new JLabel(new ImageIcon("src/icons/flowchart.png"));
+        picLabel.setBounds(80, 180, 400, 400);
+        //constraints.gridx = 0;
+	     //constraints.gridy = 3; 
+	        panel.add(picLabel);
       
       
   }
@@ -222,7 +231,13 @@ class MyFrame extends JFrame {
     });
     about =  new JMenuItem(new AbstractAction("Help") {
         public void actionPerformed(ActionEvent e) {
-       	 
+       	 	File f= new File("src/help.pdf");
+       	 	try {
+				Desktop.getDesktop().open(f);
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
        }
    });
 //    importKey =  new JMenuItem(new AbstractAction("Import keys") {
@@ -279,8 +294,8 @@ class MyFrame extends JFrame {
              Graphics2D g2d=(Graphics2D) gr;
              g2d.drawRoundRect(10, 55, 410, 250,30,30);
              g2d.drawRoundRect(430, 55, 407, 250,30,30);
-             g2d.drawRoundRect(10, 310, 827, 280,30,30);
-             
+             g2d.drawRoundRect(10, 310, 827, 375,30,30);
+            
   }
 
   private void initComponent(){
@@ -327,13 +342,17 @@ class MyFrame extends JFrame {
     lblA.setBounds(150,10,200,20);
     lblA.setFont(f2);
     lblA.setForeground(color);
-    lblB.setBounds(520,10,300,40);
+    lblB.setBounds(520,10,450,40);
     lblB.setFont(f2);
     lblB.setForeground(color);
 //    lblC.setBounds(170,390,450,40);
 //    lblC.setBackground(Color.white);
 //    lblC.setOpaque(true);
 //    
+    JLabel j=new JLabel("TOOL ROADMAP");
+    j.setBounds(360, 260, 200, 20);
+    j.setFont(f2);
+    picLabel.setBounds(50, 230, 750, 450);
     add(btnEncryptFile);
     add(btnDecryptFile);
     add(btnEncryptText);
@@ -348,6 +367,8 @@ class MyFrame extends JFrame {
     
     add(lblA);
     add(lblB);
+    add(picLabel);
+    add(j);
    // add(lblC);
    
   }

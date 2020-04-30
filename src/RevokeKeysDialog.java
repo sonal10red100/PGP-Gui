@@ -40,7 +40,7 @@ public class RevokeKeysDialog {
 		 
 	  
 	public void revokeKeysDialog() throws Exception {
-		KeyStore ks = new KeyStore("src/KeyFiles/pgp_KeyStore.keystore", "keystore_password");
+		KeyStore ks = new KeyStore("src/KeyFiles/pgp_KeyStore.keystore", l.keyStore_Password);
 		
 		JPanel panel=new JPanel();
 		String title = "Security check";

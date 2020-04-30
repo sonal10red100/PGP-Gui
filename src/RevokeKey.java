@@ -13,12 +13,13 @@ import javax.swing.border.TitledBorder;
 public class RevokeKey {
 	Color color = new Color(63,96,124);
 	 Font  f2  = new Font(Font.SERIF,  Font.BOLD, 16);
+	 LocalPath l;
 	 
 	
 	public void revokeKey(String uId, String pass) throws Exception {
 		
 		RevocationLib lib = new RevocationLib();
-		KeyStore ks = new KeyStore("src/KeyFiles/pgp_KeyStore.keystore", "keystore_password");
+		KeyStore ks = new KeyStore("src/KeyFiles/pgp_KeyStore.keystore", l.keyStore_Password);
 		int f=0;
 		KeyPairInformation[] keys1 = ks.getKeys();
 		for(KeyPairInformation key: keys1){

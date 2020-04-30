@@ -24,6 +24,7 @@ public class DigitalSignature {
     private String inputDoc;
     PGPLib pgp;
     boolean asciiArmor;
+    LocalPath l;
    // KeyStore ks;
     
     public void setPassword(String pass){
@@ -52,7 +53,7 @@ public class DigitalSignature {
     
     public void signFile() throws PGPException, WrongPasswordException, IOException{
                 
-        KeyStore ks = new KeyStore("src/KeyFiles/pgp_KeyStore.keystore", "keystore_password");
+        KeyStore ks = new KeyStore("src/KeyFiles/pgp_KeyStore.keystore", l.keyStore_Password);
         
         System.out.println("signing initiated!!");
         if (inputDoc == null || password == null){
@@ -66,21 +67,22 @@ public class DigitalSignature {
                     password, 
                     signPath,
                     false);
-        String path="C:/Users/saura/eclipse-workspace/Gui-PGP-Gui/"+signPath;
+        String path=l.localPath+signPath;
         System.out.println("Signed file created!!");
         JOptionPane.showMessageDialog(new JFrame(), "<html>Document signed and saved to this path:<br/>"+path+"</html>");
     }
     
     public boolean verifyFile() throws PGPException, FileIsEncryptedException, IOException{
         
-        KeyStore ks = new KeyStore("src/KeyFiles/pgp_KeyStore.keystore", "keystore_password");
+        KeyStore ks = new KeyStore("src/KeyFiles/pgp_KeyStore.keystore", l.keyStore_Password);
         if (username == null){
             System.out.println("user credentials invalid!!");
             return false;
-        }     
+        }  
+        
         boolean validSignature = pgp.verifyFile(inputDoc,
                                                 ks, 
-                                                "src/DataFiles/verified.txt");	
+                                                "src/DataFiles/verified_"+username+".txt");	
 	if (validSignature) {
             System.out.println("Signature is valid.");
             JOptionPane.showMessageDialog(new JFrame(), "Signature Valid.");

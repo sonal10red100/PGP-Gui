@@ -22,7 +22,7 @@ public class DisplayRevokedKeys {
 		LocalPath l;
 		public void showRevokedUsers() throws Exception {
 			
-			KeyStore ks = new KeyStore("src/KeyFiles/pgp_KeyStore.keystore", "keystore_password");
+			KeyStore ks = new KeyStore("src/KeyFiles/pgp_KeyStore.keystore", l.keyStore_Password);
 			
 			DefaultTableModel model = new DefaultTableModel(new String[]{"USER ID", "KEY ID", "PUBLIC KEY FILE"}, 0);
 			JTable table=new JTable();

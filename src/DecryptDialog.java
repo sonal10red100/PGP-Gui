@@ -5,6 +5,9 @@ import java.awt.Font;
 import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
+import javax.swing.Box;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
@@ -27,6 +30,7 @@ public class DecryptDialog extends JDialog {
 	private JTextField TargetTextField;
 	private JPasswordField PassKeyField;
 	Color color = new Color(63,96,124);
+	LocalPath l;
 
 	/**
 	 * Launch the application.
@@ -50,21 +54,21 @@ public class DecryptDialog extends JDialog {
 	 */
 	public DecryptDialog() {
 		setTitle("File Decryption");
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 600, 550);
 		getContentPane().setLayout(null);
 		
 		SourceTextField = new JTextField();
-		SourceTextField.setBounds(183, 30, 241, 23);
+		SourceTextField.setBounds(183, 30, 241, 30);
 		getContentPane().add(SourceTextField);
 		SourceTextField.setColumns(10);
 		
 		TargetTextField = new JTextField();
-		TargetTextField.setBounds(183, 82, 241, 23);
+		TargetTextField.setBounds(183, 82, 241, 30);
 		getContentPane().add(TargetTextField);
 		TargetTextField.setColumns(10);
 		
 		PassKeyField = new JPasswordField();
-		PassKeyField.setBounds(183, 126, 241, 23);
+		PassKeyField.setBounds(183, 126, 241, 30);
 		getContentPane().add(PassKeyField);
 		
 		Font  f2  = new Font(Font.SERIF,  Font.BOLD, 15);
@@ -76,10 +80,20 @@ public class DecryptDialog extends JDialog {
 		
 		final JLabel DecryptMsgLabel = new JLabel("");
 		DecryptMsgLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		DecryptMsgLabel.setBounds(156, 182, 163, 23);
+		DecryptMsgLabel.setBounds(156, 182, 163, 30);
 		getContentPane().add(DecryptMsgLabel);
 		
-		JButton SourceButton = new JButton("Source File");
+		 JLabel picLabel = new JLabel(new ImageIcon("src/icons/decryptimg.png"));
+         picLabel.setBounds(80, 180, 450, 380);
+         //constraints.gridx = 0;
+	     //constraints.gridy = 3; 
+	        getContentPane().add(picLabel);
+		
+		Icon iconEn = new ImageIcon("src/icons/source.png");
+		
+		JButton SourceButton = new JButton("Source File", iconEn);
+		//SourceButton.setBounds(45, 29, 130, 43);
+		//getContentPane().add(SourceButton);
 		SourceButton.setBackground(Color.lightGray);
 		SourceButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -98,10 +112,14 @@ public class DecryptDialog extends JDialog {
 				
 			}
 		});
-		SourceButton.setBounds(45, 29, 130, 23);
+		SourceButton.setBounds(45, 29, 130, 30);
 		getContentPane().add(SourceButton);
 		
-		JButton TargetButton = new JButton("Target Directory");
+		getContentPane().add(Box.createVerticalGlue());
+		
+		Icon iconDec = new ImageIcon("src/icons/target.png");
+		
+		JButton TargetButton = new JButton("Target Directory",iconDec);
 		TargetButton.setBackground(Color.lightGray);
 		//TargetButton.setForeground(Color.WHITE);
 		TargetButton.addActionListener(new ActionListener() {
@@ -121,7 +139,7 @@ public class DecryptDialog extends JDialog {
 				
 			}
 		});
-		TargetButton.setBounds(45, 81, 130, 23);
+		TargetButton.setBounds(45, 81, 130, 30);
 		getContentPane().add(TargetButton);
 		
 		
@@ -133,7 +151,7 @@ public class DecryptDialog extends JDialog {
 				
 				KeyStore ks = null;
 				try {
-					ks = new KeyStore("src/KeyFiles/pgp_KeyStore.keystore", "keystore_password");
+					ks = new KeyStore("src/KeyFiles/pgp_KeyStore.keystore", l.keyStore_Password);
 					PGPLib pgp = new PGPLib();
 					
 					//String privateKeyPass = "123456789";

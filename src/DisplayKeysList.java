@@ -25,7 +25,7 @@ public class DisplayKeysList {
 		public void showKeyslist() throws Exception {
 			JMenu mb=new JMenu();
 			mb.setBackground(color);
-		KeyStore ks = new KeyStore("src/KeyFiles/pgp_KeyStore.keystore", "keystore_password");
+		KeyStore ks = new KeyStore("src/KeyFiles/pgp_KeyStore.keystore", l.keyStore_Password);
 		
 		  JLabel picLabel = new JLabel(new ImageIcon("src/icons/userlist.png"));
           picLabel.setBounds(100, 20, 700, 350);
